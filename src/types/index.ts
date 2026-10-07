@@ -1,0 +1,1 @@
+export interface User { id: string; name: string; email: string; avatar: string; xp: number; streak: number; accuracyRate: number; level: number; completedQuizzesCount: number; }
