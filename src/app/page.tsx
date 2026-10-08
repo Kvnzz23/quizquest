@@ -8,6 +8,10 @@ import {
   Timer,
   Trophy,
   Zap,
+  Code2,
+  Database,
+  Network,
+  RefreshCw,
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -82,14 +86,14 @@ const features = [
 
 const topics = [
   {
-    icon: "🟨",
+    icon: Code2,
     title: "Pemrograman",
     text: "JavaScript, TypeScript, dan logika dasar.",
   },
-  { icon: "🗄️", title: "Basis Data", text: "SQL, JOIN, dan normalisasi." },
-  { icon: "🌐", title: "Jaringan", text: "Model TCP/IP, port, dan DNS." },
+  { icon: Database, title: "Basis Data", text: "SQL, JOIN, dan normalisasi." },
+  { icon: Network, title: "Jaringan", text: "Model TCP/IP, port, dan DNS." },
   {
-    icon: "🔁",
+    icon: RefreshCw,
     title: "Rekayasa Software",
     text: "Agile, Scrum, dan siklus pengembangan.",
   },
@@ -257,13 +261,19 @@ export default function Landing() {
               Topik yang bisa kamu pelajari
             </h2>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-              {topics.map((t) => (
-                <Card key={t.title} className="text-center">
-                  <p className="text-4xl" aria-hidden>
-                    {t.icon}
-                  </p>
-                  <h3 className="mt-2 font-bold">{t.title}</h3>
-                  <p className="text-sm text-slate-700">{t.text}</p>
+              {topics.map(({ icon: Icon, title, text }) => (
+                <Card
+                  key={title}
+                  className="flex flex-col items-center p-6 text-center"
+                > 
+                  <div
+                    className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 text-indigo-600"
+                    aria-hidden
+                  >
+                    <Icon size={24} />
+                  </div>
+                  <h3 className="mt-3 font-bold">{title}</h3>
+                  <p className="mt-1 text-sm text-slate-700">{text}</p>
                 </Card>
               ))}
             </div>
@@ -277,7 +287,7 @@ export default function Landing() {
           aria-label="Testimoni"
         >
           <h2 className="mb-6 text-center text-2xl font-bold md:text-3xl">
-            Kata mereka
+            Testimonial
           </h2>
           <div className="grid gap-4 md:grid-cols-3">
             {testimonials.map((t) => (
@@ -308,7 +318,7 @@ export default function Landing() {
                 >
                   <summary className="flex min-h-[44px] cursor-pointer items-center justify-between font-semibold">
                     {f.q}
-                    <span
+                    <span 
                       aria-hidden
                       className="ml-3 text-indigo-600 transition-transform group-open:rotate-45"
                     >
